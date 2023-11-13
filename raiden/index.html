@@ -95,6 +95,7 @@ var supplyn=8;
 var supplyt=0;
 for (i=0;i<supplyn;++i) supplys.push(new supply());
 var psd=0;
+var you_win=0;
 
 //audio
 var music=document.getElementsByTagName("audio");
@@ -540,6 +541,7 @@ function bomb_place(px,py,t) {
 		bmb3.y=py;
 		bossrush=6;
 		sound_main(7);
+		you_win=1;
 	}
 	peng=1;
 	time=0;
@@ -1696,12 +1698,19 @@ function on_timer() {
 	if (bgmove>4096) bgmove-=8192;
 
 if (bossrush>6) {
-	if (bossrush==7) {bossrush=8;sound_main(8);}
-	draw_word(760,500,"game");
-	draw_word(1020,500,"over");
+	if (bossrush==7) {
+		bossrush=8;
+		if (you_win==0) sound_main(8);
+	}
+	if (you_win==0) {
+		draw_word(760,500,"game over");
+	}
+	else {
+		draw_word(800,500,"you win");
+	}
 }
 else if (psd==1 || bossrush==6) {
-	if (bossrush==6 && time==300) bossrush=7;
+	if (bossrush==6 && time>=300) bossrush=7;
 
 	//draw call
 	for (i=0;i<mplanen;++i) mplanes[i].draw();
