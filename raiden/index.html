@@ -85,9 +85,9 @@ var enemybtspeed=14;
 for (i=0;i<enemybn;++i) enemybs.push(new enemybp());
 var enemybt_hp=3;
 var bos1=new boss1();
-var boss1_hp=12000;
+var boss1_hp=6000;
 var bos2=new boss2();
-var boss2_hp=18000;
+var boss2_hp=12000;
 var bos3=new boss3();
 var boss3_hp=24000;
 var supplys=[];
@@ -1361,12 +1361,12 @@ function boss1_draw() {
 			p1.crash();
 		}
 		++this.time;
-		if (this.hp>4000) {
+		if (this.hp>2000) {
 			if (this.time%100>73) this.flip=this.time%100-73;
 			else if (this.time%100>32 && this.time%100<=58) this.flip=58-this.time%100;
 		}
 		else if (this.flip<26) ++this.flip;
-		if (this.hp>9000) {
+		if (this.hp>4500) {
 			if (this.time%200<32) {
 				enemybltp_placeb(this.x+78,this.y+109,this.x+78,this.y+209,this.time%100/5);
 			}
@@ -1381,7 +1381,7 @@ function boss1_draw() {
 				enemybp_place(this.x+107,this.y+122,p1.x+p1.body[4],p1.y+p1.body[5]);
 			}
 		}
-		else if (this.hp>4000) {
+		else if (this.hp>2000) {
 			if (this.time%100<26 && this.time%5==0) {
 				enemybltp_placeb(this.x+50,this.y+79,this.x+50,this.y+79,this.time%100/5+0);
 				enemybltp_placeb(this.x+107,this.y+79,this.x+107,this.y+79,this.time%100/5+0.8);
@@ -1482,7 +1482,7 @@ function boss2_draw() {
 			p1.crash();
 		}
 		++this.time;
-		if (this.hp>13000) {
+		if (this.hp>10000) {
 			if (this.time%2==0) {
 				enemybp_placeb(this.x+57,this.y+126,this.x+57,this.y+226,(Math.abs(this.time%64-32)-16)/16);
 				enemybp_placeb(this.x+606,this.y+111,this.x+606,this.y+211,(Math.abs(this.time%64-32)-16)/16);
